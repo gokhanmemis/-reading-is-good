@@ -1,1 +1,1 @@
-# -reading-is-good
+# reading-is-good
