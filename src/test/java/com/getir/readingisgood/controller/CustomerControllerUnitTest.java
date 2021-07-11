@@ -69,12 +69,11 @@ class CustomerControllerUnitTest {
     @Test
     void saveOrUpdateCustomer() {
         Customer customer = new Customer();
-        customer.setEmail("test");
+        customer.setEmail("test@test.com");
         customer.setFirstName("test");
         customer.setLastName("test");
-        //customerRepository.save(customer);
-        assertEquals(customer.getId(),null);
-        //when(customerController.saveOrUpdateCustomer()).thenReturn(null);
+        GetirResponse<Customer> customer1 = customerController.saveOrUpdateCustomer(customer);
+        assertNotNull(customer1.getData().getId());
     }
 
 

@@ -38,23 +38,6 @@ class UserControllerUnitTest {
     UserController userController;
 
     @Test
-    public void createUserLogin() throws Exception {
-        String uri = "/user";
-        User user = new User();
-        user.setUserName("3");
-        user.setToken("Ginger");
-        mvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-        String inputJson = "{\"username\":\"test\",\"password\":\"test\"}";
-        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
-                .contentType(MediaType.APPLICATION_JSON_VALUE).content(inputJson)).andReturn();
-
-        int status = mvcResult.getResponse().getStatus();
-        assertEquals(400, status);
-        String content = mvcResult.getResponse().getContentAsString();
-        //assertEquals(content, "Product is created successfully");
-    }
-
-    @Test
     public void loginTest() throws Exception {
         User user = userController.login("test","test");
         assertThat(user.getToken()).isNotNull();

@@ -1,9 +1,11 @@
 package com.getir.readingisgood.util;
 
 import com.getir.readingisgood.ReadingIsGoodApplication;
+import com.getir.readingisgood.log.LogDTO;
+import com.getir.readingisgood.log.LogUtil;
 import com.getir.readingisgood.model.Order;
 import com.getir.readingisgood.validation.MethodValidator;
-import com.getir.readingisgood.validation.OrderValidation;
+import com.getir.readingisgood.validation.servicesvalidator.OrderValidation;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.reflect.SourceLocation;
@@ -14,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -132,6 +135,11 @@ public class UtilUnitTest {
         }
 
         assertEquals(exception,true);
+    }
+
+    @Test
+    void logTest(){
+        LogUtil.log(new LogDTO("test",new Date(),"test"));
     }
 
 }

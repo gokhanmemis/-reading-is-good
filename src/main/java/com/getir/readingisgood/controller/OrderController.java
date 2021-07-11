@@ -1,11 +1,15 @@
 package com.getir.readingisgood.controller;
 
 import com.getir.readingisgood.constant.APIConstants;
+import com.getir.readingisgood.log.LogDTO;
+import com.getir.readingisgood.log.LogUtil;
 import com.getir.readingisgood.model.Order;
+import com.getir.readingisgood.repository.dao.dto.OrderDTO;
 import com.getir.readingisgood.service.OrderService;
 import com.getir.readingisgood.util.GetirResponse;
 import com.getir.readingisgood.util.MessageCodeEnum;
 import com.getir.readingisgood.util.MessageListEnum;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -39,10 +43,21 @@ public class OrderController {
         );
     }
 
+    @RequestMapping(value = "/findAllWithAllData", method = RequestMethod.GET)
+    public GetirResponse<List<OrderDTO>> getOrderWithAllData() {
+        List<OrderDTO> orderDTOList = orderService.getOrderWithAllData();
+        return new GetirResponse<>(
+                HttpStatus.OK,
+                MessageCodeEnum.INFO,
+                Arrays.asList(MessageListEnum.INFO_ORDER_LISTED.getValue()),
+                orderDTOList
+        );
+    }
+
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public GetirResponse<Order> saveOrUpdateOrder(@RequestBody Order order) {
         orderService.saveOrUpdate(order);
-
+        LogUtil.log(new LogDTO(String.valueOf(new JSONObject(order)), new Date(),"saveOrder"));
         return new GetirResponse<>(
                 HttpStatus.OK,
                 MessageCodeEnum.INFO,
@@ -58,6 +73,16 @@ public class OrderController {
                 MessageCodeEnum.INFO,
                 Arrays.asList(MessageListEnum.INFO_ORDER_GET_BY_ID.getValue()),
                 dto
+        );
+    }
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public GetirResponse<Long> deleteOrderById(@PathVariable("id") Long id) {
+        orderService.deleteOrder(id);
+        return new GetirResponse<>(
+                HttpStatus.OK,
+                MessageCodeEnum.INFO,
+                Arrays.asList(MessageListEnum.INFO_ORDER_GET_BY_ID.getValue()),
+                id
         );
     }
 

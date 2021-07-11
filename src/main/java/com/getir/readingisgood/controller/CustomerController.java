@@ -1,6 +1,8 @@
 package com.getir.readingisgood.controller;
 
 import com.getir.readingisgood.constant.APIConstants;
+import com.getir.readingisgood.log.LogDTO;
+import com.getir.readingisgood.log.LogUtil;
 import com.getir.readingisgood.model.Customer;
 import com.getir.readingisgood.model.Order;
 import com.getir.readingisgood.service.CustomerService;
@@ -8,11 +10,13 @@ import com.getir.readingisgood.service.OrderService;
 import com.getir.readingisgood.util.GetirResponse;
 import com.getir.readingisgood.util.MessageCodeEnum;
 import com.getir.readingisgood.util.MessageListEnum;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -49,7 +53,7 @@ public class CustomerController {
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public GetirResponse<Customer> saveOrUpdateCustomer(@RequestBody Customer customer) {
         customerService.saveOrUpdate(customer);
-
+        LogUtil.log(new LogDTO(String.valueOf(new JSONObject(customer)), new Date(),"saveCustomer"));
         return new GetirResponse<>(
                 HttpStatus.OK,
                 MessageCodeEnum.INFO,

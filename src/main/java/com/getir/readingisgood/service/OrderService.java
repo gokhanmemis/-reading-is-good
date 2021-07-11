@@ -5,10 +5,12 @@ import com.getir.readingisgood.model.Order;
 import com.getir.readingisgood.repository.BookRepository;
 import com.getir.readingisgood.repository.CustomerRepository;
 import com.getir.readingisgood.repository.OrderRepository;
+import com.getir.readingisgood.repository.dao.OrderDAO;
+import com.getir.readingisgood.repository.dao.dto.OrderDTO;
 import com.getir.readingisgood.util.ExceptionUtil;
 import com.getir.readingisgood.util.MessageCodeEnum;
 import com.getir.readingisgood.util.MessageListEnum;
-import com.getir.readingisgood.validation.OrderValidation;
+import com.getir.readingisgood.validation.servicesvalidator.OrderValidation;
 import com.getir.readingisgood.validation.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -28,6 +30,7 @@ public class OrderService {
     private OrderRepository orderRepository;
     private BookRepository bookRepository;
     private CustomerRepository customerRepository;
+    private OrderDAO orderDAO;
 
     @Autowired
     public void OrderRepository(OrderRepository orderRepository) {
@@ -37,6 +40,11 @@ public class OrderService {
     @Autowired
     public void BookRepository(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
+    }
+
+    @Autowired
+    public void OrderDAO(OrderDAO orderDAO) {
+        this.orderDAO = orderDAO;
     }
 
     @Autowired
@@ -95,5 +103,12 @@ public class OrderService {
 
     public List<Order> getOrderByDateInterval(Date startDate, Date endDate) {
         return orderRepository.findByOrderDateAfterAndOrderDateBefore(startDate,endDate);
+    }
+    public List<OrderDTO> getOrderWithAllData() {
+        return orderDAO.getOrderAllData();
+    }
+
+    public void deleteOrder(Long orderID){
+        orderRepository.deleteById(orderID);
     }
 }

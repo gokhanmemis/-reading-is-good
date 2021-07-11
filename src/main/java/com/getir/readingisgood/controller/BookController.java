@@ -1,11 +1,14 @@
 package com.getir.readingisgood.controller;
 
 import com.getir.readingisgood.constant.APIConstants;
+import com.getir.readingisgood.log.LogDTO;
+import com.getir.readingisgood.log.LogUtil;
 import com.getir.readingisgood.model.Book;
 import com.getir.readingisgood.service.BookService;
 import com.getir.readingisgood.util.GetirResponse;
 import com.getir.readingisgood.util.MessageCodeEnum;
 import com.getir.readingisgood.util.MessageListEnum;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -42,6 +46,7 @@ public class BookController {
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public GetirResponse<Book> saveOrUpdateBook(@RequestBody Book book) {
+        LogUtil.log(new LogDTO(String.valueOf(new JSONObject(book)), new Date(),"saveBook"));
         bookService.saveOrUpdate(book);
 
         return new GetirResponse<>(
