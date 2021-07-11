@@ -19,11 +19,12 @@ public class UserController {
 
     @RequestMapping(value = "/user", method = RequestMethod.POST)
     public User login(@RequestParam("username") String username, @RequestParam("password") String pwd) {
-
-        String token = getJWTToken(username);
         User user = new User();
         user.setUserName(username);
-        user.setToken(token);
+        if(username.equals("username") && pwd.equals("pwd")){
+            String token = getJWTToken(username);
+            user.setToken(token);
+        }
         return user;
 
     }

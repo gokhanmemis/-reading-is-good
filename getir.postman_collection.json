@@ -1,0 +1,432 @@
+{
+	"info": {
+		"_postman_id": "7f0d23c8-46c1-4a9b-bbdc-c735293b49b3",
+		"name": "getir",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getToken",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "username",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "pwd",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/user",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findAllCustomers",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/getir/api/customer/findAll",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getir",
+						"api",
+						"customer",
+						"findAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "saveOrUpdateCustomer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJnZXRpckpXVCIsInN1YiI6InVzZXJuYW1lIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYyNTk5Mjk2MiwiZXhwIjoxNjI1OTkzNTYyfQ.Sb0wTFy0Yf_5knzQgJhHRo-kQUazocA3HyWc9CsgMNL4gGJKDXfehQdO82-xatTS1EWdBquW2QYX2Uskq7nMcg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":6,\r\n    \"firstName\":\"Gökhan\",\r\n    \"lastName\":\"Gökhanhan\",\r\n    \"email\":\"gmgmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/getir/api/customer/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getir",
+						"api",
+						"customer",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findAllBooks",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJnZXRpckpXVCIsInN1YiI6InVzZXJuYW1lIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYyNTkyNDQ1NCwiZXhwIjoxNjI1OTI1MDU0fQ.2EXB23Iz2HeuJpnjZAOrTxII-p0jcaqzMJALkT--oIkErf7ybrVlnhlUO719dGF8s40La0oaFWX8M5x_r2appQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/getir/api/book/findAll",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getir",
+						"api",
+						"book",
+						"findAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "saveOrUpdateBook",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJnZXRpckpXVCIsInN1YiI6InVzZXJuYW1lIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYyNTk5NTM3MiwiZXhwIjoxNjI1OTk1OTcyfQ.SdZlRqW18Gua7pdMO0VMVlZsu3ocP4fMAbs4ejwmZN7ndkZb3PUeLVjRjIKad8LpFn0AbUWCgKFd3b0yqHqYRQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"bookName\":\"Var Mısın? Güçlü Bir Yaşam İçin Öneriler\",\r\n    \"author\":\"Doğan Cüceloğlu\",\r\n    \"isbn\":\"9786057635839\",\r\n    \"stockSize\":1,\r\n    \"price\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/getir/api/book/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getir",
+						"api",
+						"book",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findAllOrders",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJnZXRpckpXVCIsInN1YiI6InVzZXJuYW1lIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYyNTkyNDQ1NCwiZXhwIjoxNjI1OTI1MDU0fQ.2EXB23Iz2HeuJpnjZAOrTxII-p0jcaqzMJALkT--oIkErf7ybrVlnhlUO719dGF8s40La0oaFWX8M5x_r2appQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/getir/api/order/findAll",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getir",
+						"api",
+						"order",
+						"findAll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findAllOrdersWithAllData",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJnZXRpckpXVCIsInN1YiI6InVzZXJuYW1lIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYyNjAwMjg5MywiZXhwIjoxNjI2MDAzNDkzfQ.PzZiFR5ZY3I7tRf0a5czK5vGi7Kdmv0BFMOmnA0GNUQLYjYbb0Et07kV410B8LIj-fj4INCNKkifo4tuIWFxMw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/getir/api/order/findAllWithAllData",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getir",
+						"api",
+						"order",
+						"findAllWithAllData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "saveOrUpdateOrder",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJnZXRpckpXVCIsInN1YiI6InVzZXJuYW1lIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYyNTk5Mjk2MiwiZXhwIjoxNjI1OTkzNTYyfQ.Sb0wTFy0Yf_5knzQgJhHRo-kQUazocA3HyWc9CsgMNL4gGJKDXfehQdO82-xatTS1EWdBquW2QYX2Uskq7nMcg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"bookId\":1,\r\n    \"customerId\":1,\r\n    \"orderDate\":\"2021-07-03\",\r\n    \"quantity\":2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/getir/api/order/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getir",
+						"api",
+						"order",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findOrderById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJnZXRpckpXVCIsInN1YiI6InVzZXJuYW1lIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYyNTkxODg0NSwiZXhwIjoxNjI1OTE5NDQ1fQ.4GfdidQFX4Gb3ya9D4Z26VRf6PaQHnDMFAs10JlWp2iej_Jc-P3vBc417EeZNLoGMWJ-zNGhe6vt4mvCgHZmvQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/getir/api/order/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getir",
+						"api",
+						"order",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findOrderByCustomerId",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJnZXRpckpXVCIsInN1YiI6InVzZXJuYW1lIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYyNTk0NzMxOSwiZXhwIjoxNjI1OTQ3OTE5fQ.c3OjmZ70tGyWx1MNxsDIcbZv811qiXNWsIufKx0dIcyg2rPB71fMz1EE99ve0h-4ndXb6e4zctyqUoNG2-Yl0g",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/getir/api/customer/order/1?page=0&size=3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getir",
+						"api",
+						"customer",
+						"order",
+						"1"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getOrdersByDate",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJnZXRpckpXVCIsInN1YiI6InVzZXJuYW1lIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYyNTkyNjk4MSwiZXhwIjoxNjI1OTI3NTgxfQ.whRFkTN7CaE2OCBhLsaMjjROnXV0IZBp3Vk9419aC_gCcUYa5A9e42V4-8hNGZbInh0wTckpnA-fA37XJfMPZA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "startDate",
+							"value": "2021-01-01",
+							"type": "text"
+						},
+						{
+							"key": "endDate",
+							"value": "2022-01-01",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/getir/api/order/getOrdersByDate",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getir",
+						"api",
+						"order",
+						"getOrdersByDate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getStatistic",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJnZXRpckpXVCIsInN1YiI6InVzZXJuYW1lIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYyNjAwMDU1OSwiZXhwIjoxNjI2MDAxMTU5fQ.VPN0vk2hQxC6ME86sj7SAR29HXJuUe4btMnnRTL9_AE1W_DEGt1wRlE_RgiJtyf2yRbrQuiv1nWAKtGXfXNcUA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/getir/api/statistic/statistic",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"getir",
+						"api",
+						"statistic",
+						"statistic"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
